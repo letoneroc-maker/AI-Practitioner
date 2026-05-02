@@ -4,152 +4,307 @@
     "title": "CEO of OpenAI",
     "company": "OpenAI",
     "avatar": "https://pbs.twimg.com/profile_images/1623350434003099649/6df5mXOR_400x400.jpg",
+    "bio": "ChatGPT与GPT-4的缔造者，全球最具影响力的AI企业家之一",
     "links": {
       "x": "https://x.com/sama",
       "website": "https://samaltman.com",
-      "github": "https://github.com/samaltman"
-    }
+      "github": "https://github.com/samaltman",
+      "linkedin": "https://linkedin.com/in/samaltman"
+    },
+    "tags": ["CEO", "Generative AI"]
   },
   {
     "name": "Andrew Ng",
-    "title": "Founder of DeepLearning.AI",
+    "title": "DeepLearning.AI 创始人",
     "company": "Google",
     "avatar": "https://pbs.twimg.com/profile_images/1705477600261120000/YMrJ7Vgx_400x400.jpg",
+    "bio": "全球AI教育先驱，Google Brain创始成员，Coursera联合创始人",
     "links": {
       "x": "https://x.com/AndrewYNg",
       "youtube": "https://www.youtube.com/@AndrewNg",
-      "website": "https://www.andrewng.org"
-    }
+      "website": "https://www.andrewng.org",
+      "linkedin": "https://linkedin.com/in/andrewyng"
+    },
+    "tags": ["AI Education", "Deep Learning"]
   },
   {
     "name": "Yann LeCun",
-    "title": "Chief AI Scientist at Meta",
+    "title": "Meta 首席AI科学家",
     "company": "Meta",
     "avatar": "https://pbs.twimg.com/profile_images/1088097616503291904/yLgRf1sP_400x400.jpg",
+    "bio": "2018年图灵奖得主，卷积神经网络之父，Facebook AI研究院创始人",
     "links": {
       "x": "https://x.com/ylecun",
       "website": "https://www.facebook.com/yann.lecun",
-      "github": "https://github.com/yann"
-    }
-  },
-  {
-    "name": "Jeff Dean",
-    "title": "Google Fellow",
-    "company": "Google",
-    "avatar": "https://pbs.twimg.com/profile_images/1595604506148864000/DINjvb9A_400x400.jpg",
-    "links": {
-      "x": "https://x.com/JeffDean",
-      "github": "https://github.com/jeffdean"
-    }
+      "github": "https://github.com/yannlecun"
+    },
+    "tags": ["Turing Award", "CNN"]
   },
   {
     "name": "Demis Hassabis",
     "title": "CEO of Google DeepMind",
     "company": "Google",
     "avatar": "https://pbs.twimg.com/profile_images/1618363614/Demis_crop_400x400.jpg",
+    "bio": "AlphaGo缔造者，神经科学背景，Google最顶尖AI实验室掌门人",
     "links": {
       "website": "https://deepmind.google/",
-      "linkedin": "https://www.linkedin.com/in/demishassabis"
-    }
+      "linkedin": "https://linkedin.com/in/demishassabis"
+    },
+    "tags": ["AlphaGo", "AGI"]
   },
   {
     "name": "Fei-Fei Li",
-    "title": "Professor at Stanford",
+    "title": "斯坦福大学教授",
     "company": "Google",
     "avatar": "https://pbs.twimg.com/profile_images/1705477896090477568/DIhLcdtG_400x400.jpg",
+    "bio": "ImageNet创始人，计算机视觉先驱，斯坦福以人为本AI研究院联合主任",
     "links": {
       "x": "https://x.com/drfeifei",
-      "website": "https://www.cs.stanford.edu/~fei-fei"
-    }
+      "website": "https://ai.stanford.edu/~fei-fei-liu",
+      "linkedin": "https://linkedin.com/in/fei-fei-li-4541247"
+    },
+    "tags": ["Computer Vision", "Stanford"]
   },
   {
-    "name": "Satya Nadella",
-    "title": "CEO of Microsoft",
-    "company": "Microsoft",
-    "avatar": "https://pbs.twimg.com/profile_images/1595604523367923713/yS-t-r9T_400x400.jpg",
+    "name": "Jeff Dean",
+    "title": "Google Fellow & SVP",
+    "company": "Google",
+    "avatar": "https://pbs.twimg.com/profile_images/1595604506148864000/DINjvb9A_400x400.jpg",
+    "bio": "Google早期核心工程师，Google Brain与TPU之父，公司技术基础设施总设计师",
     "links": {
-      "x": "https://x.com/satyanadella",
-      "linkedin": "https://www.linkedin.com/in/satyanadella"
-    }
-  },
-  {
-    "name": "Ilya Sutskever",
-    "title": "Co-founder of Safe Superintelligence",
-    "company": "SSI",
-    "avatar": "https://pbs.twimg.com/profile_images/1625695018163220480/XS-E9y2d_400x400.jpg",
-    "links": {
-      "x": "https://x.com/ilyasut",
-      "github": "https://github.com/ilyasutskever"
-    }
+      "x": "https://x.com/JeffDean",
+      "github": "https://github.com/jeffdean",
+      "linkedin": "https://linkedin.com/in/jeffdean"
+    },
+    "tags": ["Systems", "Infrastructure"]
   },
   {
     "name": "Dario Amodei",
     "title": "CEO of Anthropic",
     "company": "Anthropic",
     "avatar": "https://pbs.twimg.com/profile_images/1705477600261120000/YMrJ7Vgx_400x400.jpg",
+    "bio": "Anthropic创始人，前OpenAI研究副总裁，Claude系列模型核心贡献者",
     "links": {
       "website": "https://www.anthropic.com",
-      "linkedin": "https://www.linkedin.com/in/dario-amodei"
-    }
+      "linkedin": "https://linkedin.com/in/darioamodei"
+    },
+    "tags": ["AI Safety", "LLM"]
   },
   {
     "name": "Jensen Huang",
     "title": "CEO of NVIDIA",
     "company": "NVIDIA",
     "avatar": "https://pbs.twimg.com/profile_images/1689258340769923073/h0O1vWH0_400x400.jpg",
+    "bio": "GPU教父，Transformer时代最大赢家，ChatGPT背后的硬件推手",
     "links": {
       "x": "https://x.com/jensen_huang",
-      "website": "https://www.nvidia.com"
-    }
+      "website": "https://www.nvidia.com",
+      "linkedin": "https://linkedin.com/in/jensenhuang"
+    },
+    "tags": ["GPU", "Hardware"]
   },
   {
     "name": "Andrej Karpathy",
     "title": "AI Educator & Researcher",
     "company": "OpenAI",
     "avatar": "https://pbs.twimg.com/profile_images/1581746750535897090/-YpLIlKH_400x400.jpg",
+    "bio": "前Tesla Autopilot负责人，斯坦福CS231n明星讲师，AI教育顶流",
     "links": {
       "x": "https://x.com/karpathy",
       "youtube": "https://www.youtube.com/@AndrejKarpathy",
-      "github": "https://github.com/karpathy"
-    }
+      "github": "https://github.com/karpathy",
+      "website": "https://karpathy.ai"
+    },
+    "tags": ["Education", "Self-Driving"]
   },
   {
     "name": "Geoffrey Hinton",
-    "title": "Godfather of AI",
+    "title": "深度学习之父",
     "company": "Google",
     "avatar": "https://pbs.twimg.com/profile_images/1595604314853212162/IWC5VdD3_400x400.jpg",
+    "bio": "2018年图灵奖得主，Backprop算法先驱，深度学习奠基人",
     "links": {
-      "website": "https://www.cs.toronto.edu/~hinton/"
-    }
+      "website": "https://www.cs.toronto.edu/~hinton/",
+      "linkedin": "https://linkedin.com/in/geoffrey-hinton-4b53988"
+    },
+    "tags": ["Turing Award", "Deep Learning"]
   },
   {
-    "name": "Mark Zuckerberg",
-    "title": "CEO of Meta",
-    "company": "Meta",
-    "avatar": "https://pbs.twimg.com/profile_images/1587795982947226625/wEBj4Xjb_400x400.jpg",
+    "name": "Ilya Sutskever",
+    "title": "Co-founder of SSI",
+    "company": "SSI",
+    "avatar": "https://pbs.twimg.com/profile_images/1625695018163220480/XS-E9y2d_400x400.jpg",
+    "bio": "OpenAI联合创始人兼首席科学家，GPT系列核心架构师",
     "links": {
-      "x": "https://x.com/finkd",
-      "website": "https://about.meta.com"
-    }
+      "x": "https://x.com/ilyasut",
+      "github": "https://github.com/ilyasutskever",
+      "website": "https://sifsafe.ai"
+    },
+    "tags": ["LLM", "Safety"]
+  },
+  {
+    "name": "Satya Nadella",
+    "title": "CEO of Microsoft",
+    "company": "Microsoft",
+    "avatar": "https://pbs.twimg.com/profile_images/1595604523367923713/yS-t-r9T_400x400.jpg",
+    "bio": "Microsoft转型掌舵人，Copilot布局者，Azure AI推动者",
+    "links": {
+      "x": "https://x.com/satyanadella",
+      "linkedin": "https://linkedin.com/in/satyanadella"
+    },
+    "tags": ["Enterprise", "Cloud"]
   },
   {
     "name": "Sundar Pichai",
     "title": "CEO of Google",
     "company": "Google",
     "avatar": "https://pbs.twimg.com/profile_images/1595604093606940673/wFLymIu8_400x400.jpg",
+    "bio": "Google与Alphabet掌门人，Chrome与Android崛起功臣，Gemini战略主导者",
     "links": {
       "x": "https://x.com/sundarpichai",
-      "linkedin": "https://www.linkedin.com/in/sundarpichai"
-    }
+      "linkedin": "https://linkedin.com/in/sundarpichai"
+    },
+    "tags": ["Leadership", "Products"]
   },
   {
-    "name": "Lisa Yao",
-    "title": "AI Research Director at Google",
-    "company": "Google",
-    "avatar": "https://pbs.twimg.com/profile_images/1705477600261120000/YMrJ7Vgx_400x400.jpg",
+    "name": "Mark Zuckerberg",
+    "title": "CEO of Meta",
+    "company": "Meta",
+    "avatar": "https://pbs.twimg.com/profile_images/1587795982947226625/wEBj4Xjb_400x400.jpg",
+    "bio": "Facebook创始人，Meta AI战略制定者，开源大模型LLaMA推动者",
     "links": {
-      "x": "https://x.com/lisayao",
-      "linkedin": "https://www.linkedin.com/in/lisayao"
-    }
+      "x": "https://x.com/finkd",
+      "website": "https://about.meta.com"
+    },
+    "tags": ["Open Source", "Social AI"]
+  },
+  {
+    "name": "Jim Fan",
+    "title": "NVIDIA AI Scientist",
+    "company": "NVIDIA",
+    "avatar": "https://pbs.twimg.com/profile_images/1624627139732615168/2B0XzdhL_400x400.jpg",
+    "bio": "前Google DeepMind研究员，GEBO具身智能研究先驱，AI技术大V",
+    "links": {
+      "x": "https://x.com/DrJimFan",
+      "github": "https://github.com/jimfan",
+      "linkedin": "https://linkedin.com/in/jimfan"
+    },
+    "tags": ["Embodied AI", "Robotics"]
+  },
+  {
+    "name": "Yoshua Bengio",
+    "title": "深度学习先驱",
+    "company": "Meta",
+    "avatar": "https://pbs.twimg.com/profile_images/1595604314853212162/IWC5VdD3_400x400.jpg",
+    "bio": "2018年图灵奖得主，GAN生成对抗网络发明人，Element AI创始人",
+    "links": {
+      "x": "https://x.com/Yoshua_Bengio",
+      "website": "https://mila.quebec/en/yoshua-bengio/",
+      "linkedin": "https://linkedin.com/in/yoshua-bengio"
+    },
+    "tags": ["GAN", "Turing Award"]
+  },
+  {
+    "name": "Kyle Conger",
+    "title": "xAI 联合创始人",
+    "company": "xAI",
+    "avatar": "https://pbs.twimg.com/profile_images/1581746750535897090/-YpLIlKH_400x400.jpg",
+    "bio": "前DeepMind研究员，Google N-gram团队，xAI创始团队核心成员",
+    "links": {
+      "x": "https://x.com/kyle_conger",
+      "github": "https://github.com/kyleconger"
+    },
+    "tags": ["LLM", "xAI"]
+  },
+  {
+    "name": "Tim Cook",
+    "title": "CEO of Apple",
+    "company": "Apple",
+    "avatar": "https://pbs.twimg.com/profile_images/1595604523367923713/yS-t-r9T_400x400.jpg",
+    "bio": "Apple掌门人，Apple Intelligence布局者，隐私AI践行者",
+    "links": {
+      "x": "https://x.com/tim_cook",
+      "website": "https://www.apple.com",
+      "linkedin": "https://linkedin.com/in/timcook"
+    },
+    "tags": ["Consumer AI", "Privacy"]
+  },
+  {
+    "name": "Mustafa Suleyman",
+    "title": "CEO of Microsoft AI",
+    "company": "Microsoft",
+    "avatar": "https://pbs.twimg.com/profile_images/1705477600261120000/YMrJ7Vgx_400x400.jpg",
+    "bio": "DeepMind联合创始人，Google AI产品负责人，现任Microsoft AI CEO",
+    "links": {
+      "x": "https://x.com/mustafafund",
+      "website": "https://mustafa.ai",
+      "linkedin": "https://linkedin.com/in/mustafasuleyman"
+    },
+    "tags": ["Products", "Applied AI"]
+  },
+  {
+    "name": "Aravind Srinivas",
+    "title": "CEO of Perplexity AI",
+    "company": "Perplexity",
+    "avatar": "https://pbs.twimg.com/profile_images/1581746750535897090/-YpLIlKH_400x400.jpg",
+    "bio": "前Google研究科学家，Perplexity AI创始人，AI搜索新锐",
+    "links": {
+      "x": "https://x.com/AravSrinivas",
+      "website": "https://perplexity.ai",
+      "linkedin": "https://linkedin.com/in/aravindsrinivas"
+    },
+    "tags": ["AI Search", "Startups"]
+  },
+  {
+    "name": "Alex Wang",
+    "title": "CEO of Scale AI",
+    "company": "Scale AI",
+    "avatar": "https://pbs.twimg.com/profile_images/1581746750535897090/-YpLIlKH_400x400.jpg",
+    "bio": "Scale AI创始人，AI数据基础设施独角兽缔造者",
+    "links": {
+      "x": "https://x.com/alexabwang",
+      "website": "https://scale.com",
+      "linkedin": "https://linkedin.com/in/alexwang"
+    },
+    "tags": ["Data", "Infrastructure"]
+  },
+  {
+    "name": "Lisa Su",
+    "title": "CEO of AMD",
+    "company": "AMD",
+    "avatar": "https://pbs.twimg.com/profile_images/1595604523367923713/yS-t-r9T_400x400.jpg",
+    "bio": "AMD逆袭掌舵人，GPU与AI芯片战场关键人物",
+    "links": {
+      "x": "https://x.com/LisaSu",
+      "website": "https://www.amd.com",
+      "linkedin": "https://linkedin.com/in/lisasu"
+    },
+    "tags": ["Hardware", "Chips"]
+  },
+  {
+    "name": "François Chollet",
+    "title": "Google 软件工程师",
+    "company": "Google",
+    "avatar": "https://pbs.twimg.com/profile_images/1581746750535897090/-YpLIlKH_400x400.jpg",
+    "bio": "Keras之父，Google AI研究员，《Python深度学习》作者",
+    "links": {
+      "x": "https://x.com/fchollet",
+      "github": "https://github.com/fchollet",
+      "website": "https://keras.io"
+    },
+    "tags": ["Keras", "Framework"]
+  },
+  {
+    "name": "Natasha Lomas",
+    "title": "TechCrunch 资深记者",
+    "company": "TechCrunch",
+    "avatar": "https://pbs.twimg.com/profile_images/1581746750535897090/-YpLIlKH_400x400.jpg",
+    "bio": "科技圈资深观察者，AI行业深度报道者",
+    "links": {
+      "x": "https://x.com/lomac",
+      "website": "https://techcrunch.com",
+      "linkedin": "https://linkedin.com/in/natashalomas"
+    },
+    "tags": ["Journalism", "Tech News"]
   }
 ]

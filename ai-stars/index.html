@@ -3,165 +3,849 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Stars - AI行业大牛导航</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>AI Stars - 发现AI行业大牛</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#3b82f6',
-            dark: '#1a1a2e',
-          }
-        }
-      }
-    }
-  </script>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #09090b;
+      --bg-secondary: #0f0f12;
+      --bg-elevated: #18181b;
+      --accent-primary: #818cf8;
+      --accent-secondary: #a78bfa;
+      --accent-tertiary: #c084fc;
+      --accent-glow: rgba(129, 140, 248, 0.15);
+      --text-primary: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-emphasis: rgba(255, 255, 255, 0.1);
+      --surface-glass: rgba(255, 255, 255, 0.03);
+      --surface-hover: rgba(255, 255, 255, 0.06);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
       min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
     }
-    .card-hover:hover {
+
+    /* Animated gradient background */
+    .bg-gradient {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-primary);
+      z-index: -2;
+    }
+
+    .bg-gradient::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(129, 140, 248, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 50% at 80% 90%, rgba(167, 139, 250, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(192, 132, 252, 0.04) 0%, transparent 60%);
+      animation: drift 30s ease-in-out infinite;
+    }
+
+    .bg-gradient::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.015;
+      pointer-events: none;
+    }
+
+    @keyframes drift {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: radial-gradient(circle, rgba(129, 140, 248, 0.6) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 20s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); opacity: 0.4; }
+      25% { transform: translateY(-80px) translateX(15px); opacity: 0.7; }
+      50% { transform: translateY(-160px) translateX(-5px); opacity: 0.3; }
+      75% { transform: translateY(-80px) translateX(20px); opacity: 0.6; }
+    }
+
+    /* Header */
+    header {
+      padding: 80px 40px 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .logo-icon {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-secondary) 100%);
+      border: 1px solid var(--border-emphasis);
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      box-shadow:
+        0 0 0 1px rgba(129, 140, 248, 0.1) inset,
+        0 2px 8px rgba(0, 0, 0, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.3);
+      animation: subtle-pulse 6s ease-in-out infinite;
+    }
+
+    @keyframes subtle-pulse {
+      0%, 100% { box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.1) inset, 0 2px 8px rgba(0, 0, 0, 0.4), 0 8px 32px rgba(0, 0, 0, 0.3); }
+      50% { box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.15) inset, 0 4px 12px rgba(0, 0, 0, 0.5), 0 12px 40px rgba(0, 0, 0, 0.4); }
+    }
+
+    .logo h1 {
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -3px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 16px;
+      font-weight: 400;
+      margin-top: 16px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Stats section */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      margin-top: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .stat-item {
+      text-align: center;
+      position: relative;
+    }
+
+    .stat-item::before {
+      content: '';
+      position: absolute;
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 32px;
+      background: linear-gradient(180deg, transparent, var(--border-subtle), transparent);
+    }
+
+    .stat-item:first-child::before {
+      display: none;
+    }
+
+    .stat-value {
+      font-size: 48px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.1;
+      letter-spacing: -2px;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+      font-size: 12px;
+      margin-top: 8px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* Search bar */
+    .search-container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 24px;
+      background: var(--surface-glass);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      backdrop-filter: blur(20px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .search-box:focus-within {
+      background: var(--surface-hover);
+      border-color: var(--border-emphasis);
+      box-shadow: 0 0 0 4px var(--accent-glow);
+    }
+
+    .search-box i {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .search-box input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-primary);
+      font-size: 15px;
+      font-family: inherit;
+    }
+
+    .search-box input::placeholder {
+      color: var(--text-muted);
+    }
+
+    /* Filter container */
+    .filter-container {
+      padding: 40px 40px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-glass);
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+      letter-spacing: 0.3px;
+    }
+
+    .filter-btn:hover {
+      background: var(--surface-hover);
+      color: var(--text-primary);
+      border-color: var(--border-emphasis);
+    }
+
+    .filter-btn.active {
+      background: var(--text-primary);
+      border-color: var(--text-primary);
+      color: var(--bg-primary);
+      font-weight: 600;
+    }
+
+    /* Cards container */
+    .cards-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 56px 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    /* Card styles */
+    .card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 28px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      background: var(--bg-elevated);
+      border-color: var(--border-emphasis);
       transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
     }
-    .company-btn.active {
-      background: #3b82f6;
-      color: white;
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 20px;
     }
-    .social-icon:hover {
-      transform: scale(1.1);
+
+    .avatar-wrapper {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 1px solid var(--border-subtle);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .avatar {
+      border-color: var(--border-emphasis);
+    }
+
+    .online-indicator {
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      width: 14px;
+      height: 14px;
+      background: #22c55e;
+      border-radius: 50%;
+      border: 2px solid var(--bg-secondary);
+    }
+
+    .card-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card-name {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      letter-spacing: -0.3px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .card-company {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--surface-glass);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .card-bio {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-glass);
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border: 1px solid transparent;
+    }
+
+    .social-link:hover {
+      background: var(--surface-hover);
+      color: var(--text-primary);
+      border-color: var(--border-subtle);
+    }
+
+    .social-link i {
+      font-size: 15px;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 6px;
+    }
+
+    .tag {
+      padding: 4px 10px;
+      background: var(--surface-glass);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 100px 20px;
+      color: var(--text-muted);
+    }
+
+    .empty-state i {
+      font-size: 48px;
+      margin-bottom: 20px;
+      opacity: 0.3;
+    }
+
+    .empty-state p {
+      font-size: 15px;
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--surface-hover);
+      color: var(--text-primary);
+      border-color: var(--border-emphasis);
+      transform: translateY(-2px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header { padding: 56px 20px 40px; }
+      .logo h1 { font-size: 36px; letter-spacing: -2px; }
+      .logo-icon { width: 56px; height: 56px; font-size: 28px; }
+      .stats { gap: 40px; flex-wrap: wrap; }
+      .stat-item::before { display: none; }
+      .stat-value { font-size: 36px; }
+      .search-container { padding: 0 20px; }
+      .filter-container { padding: 28px 20px 0; }
+      .cards-container { padding: 28px 20px; grid-template-columns: 1fr; gap: 16px; }
+      .card { padding: 20px; }
+      .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+    }
+
+    /* Card entrance animation */
+    .card {
+      animation: card-enter 0.5s ease-out backwards;
+    }
+
+    @keyframes card-enter {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
-<body class="text-gray-100">
-  <!-- Header -->
-  <header class="bg-gray-900/80 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4">
-      <h1 class="text-2xl font-bold text-white flex items-center gap-3">
-        <i class="fas fa-star text-yellow-400"></i>
-        AI Stars
-      </h1>
-      <p class="text-gray-400 text-sm mt-1">收集AI行业大牛，点击头像即可访问他们的主页</p>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="particles" id="particles"></div>
+
+  <header>
+    <div class="logo">
+      <div class="logo-icon">✨</div>
+      <h1>AI Stars</h1>
+    </div>
+    <p class="subtitle">发现AI行业最杰出的人物</p>
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-value" id="people-count">0</div>
+        <div class="stat-label">位大牛</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="company-count">0</div>
+        <div class="stat-label">家公司</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">∞</div>
+        <div class="stat-label">连接可能</div>
+      </div>
     </div>
   </header>
 
-  <div class="max-w-7xl mx-auto px-6 py-8 flex gap-8">
-    <!-- Sidebar -->
-    <aside class="w-48 flex-shrink-0">
-      <div class="bg-gray-800/50 rounded-xl p-4 sticky top-24">
-        <h3 class="text-sm font-semibold text-gray-400 uppercase mb-3">公司筛选</h3>
-        <div class="space-y-2" id="company-filters">
-          <button class="company-btn active w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-700 transition" data-company="all">全部</button>
-        </div>
-      </div>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="flex-1">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="cards-container">
-        <!-- Cards will be injected here -->
-      </div>
-      <div id="empty-state" class="hidden text-center py-20">
-        <i class="fas fa-user-slash text-4xl text-gray-600 mb-4"></i>
-        <p class="text-gray-500">暂无数据</p>
-      </div>
-    </main>
+  <div class="search-container">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="search-input" placeholder="搜索AI大牛...">
+    </div>
   </div>
+
+  <div class="filter-container" id="filter-container"></div>
+  <div class="cards-container" id="cards-container"></div>
+  <div class="empty-state" id="empty-state" style="display: none;">
+    <i class="fas fa-search"></i>
+    <p>暂无匹配的结果</p>
+  </div>
+
+  <button class="back-to-top" id="back-to-top" title="返回顶部">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <script>
     const SOCIAL_ICONS = {
-      x: 'fab fa-x-twitter',
+      x: 'svg-icon',
       twitter: 'fab fa-twitter',
       youtube: 'fab fa-youtube',
       github: 'fab fa-github',
       linkedin: 'fab fa-linkedin',
       website: 'fas fa-globe',
       blog: 'fas fa-blog',
-      ins: 'fab fa-instagram',
+      instagram: 'fab fa-instagram',
     };
 
-    const SOCIAL_COLORS = {
-      x: '#000000',
-      twitter: '#1DA1F2',
-      youtube: '#FF0000',
-      github: '#ffffff',
-      linkedin: '#0077B5',
-      website: '#3b82f6',
-      blog: '#10b981',
-      ins: '#E4405F',
-    };
+    const X_SVG = '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
 
-    let allPeople = [];
-
-    async function loadData() {
-      try {
-        const response = await fetch('data/people.json');
-        allPeople = await response.json();
-        renderCompanies();
-        renderCards('all');
-      } catch (error) {
-        console.error('Failed to load data:', error);
+    // Create floating particles
+    function createParticles() {
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+        container.appendChild(particle);
       }
     }
 
-    function renderCompanies() {
+    // Back to top button
+    function initBackToTop() {
+      const btn = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      });
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    const allPeople = [
+      {
+        name: "Sam Altman",
+        title: "CEO of OpenAI",
+        company: "OpenAI",
+        avatar: "https://pbs.twimg.com/profile_images/1623350434003099649/6df5mXOR_400x400.jpg",
+        bio: "ChatGPT与GPT-4的缔造者，全球最具影响力的AI企业家之一",
+        links: { x: "https://x.com/sama" },
+        tags: ["CEO", "Generative AI"]
+      },
+      {
+        name: "Andrew Ng",
+        title: "DeepLearning.AI 创始人",
+        company: "Google",
+        avatar: "https://pbs.twimg.com/profile_images/1705477600261120000/YMrJ7Vgx_400x400.jpg",
+        bio: "全球AI教育先驱，Google Brain创始成员，Coursera联合创始人",
+        links: { x: "https://x.com/AndrewYNg", website: "https://www.andrewng.org" },
+        tags: ["AI Education", "Deep Learning"]
+      },
+      {
+        name: "Yann LeCun",
+        title: "Meta 首席AI科学家",
+        company: "Meta",
+        avatar: "https://pbs.twimg.com/profile_images/1088097616503291904/yLgRf1sP_400x400.jpg",
+        bio: "2018年图灵奖得主，卷积神经网络之父，Facebook AI研究院创始人",
+        links: { x: "https://x.com/ylecun" },
+        tags: ["Turing Award", "CNN"]
+      },
+      {
+        name: "Demis Hassabis",
+        title: "CEO of Google DeepMind",
+        company: "Google",
+        avatar: "https://pbs.twimg.com/profile_images/1618363614/Demis_crop_400x400.jpg",
+        bio: "AlphaGo缔造者，神经科学背景，Google最顶尖AI实验室掌门人",
+        links: { website: "https://deepmind.google/" },
+        tags: ["AlphaGo", "AGI"]
+      },
+      {
+        name: "Fei-Fei Li",
+        title: "斯坦福大学教授",
+        company: "Google",
+        avatar: "https://pbs.twimg.com/profile_images/1705477896090477568/DIhLcdtG_400x400.jpg",
+        bio: "ImageNet创始人，计算机视觉先驱，斯坦福以人为本AI研究院联合主任",
+        links: { x: "https://x.com/drfeifei" },
+        tags: ["Computer Vision", "Stanford"]
+      },
+      {
+        name: "Jeff Dean",
+        title: "Google Fellow & SVP",
+        company: "Google",
+        avatar: "https://pbs.twimg.com/profile_images/1595604506148864000/DINjvb9A_400x400.jpg",
+        bio: "Google早期核心工程师，Google Brain与TPU之父，公司技术基础设施总设计师",
+        links: { x: "https://x.com/JeffDean" },
+        tags: ["Systems", "Infrastructure"]
+      },
+      {
+        name: "Dario Amodei",
+        title: "CEO of Anthropic",
+        company: "Anthropic",
+        avatar: "https://pbs.twimg.com/profile_images/1705477600261120000/YMrJ7Vgx_400x400.jpg",
+        bio: "Anthropic创始人，前OpenAI研究副总裁，Claude系列模型核心贡献者",
+        links: { website: "https://www.anthropic.com" },
+        tags: ["AI Safety", "LLM"]
+      },
+      {
+        name: "Jensen Huang",
+        title: "CEO of NVIDIA",
+        company: "NVIDIA",
+        avatar: "https://pbs.twimg.com/profile_images/1689258340769923073/h0O1vWH0_400x400.jpg",
+        bio: "GPU教父，Transformer时代最大赢家，ChatGPT背后的硬件推手",
+        links: { x: "https://x.com/jensen_huang" },
+        tags: ["GPU", "Hardware"]
+      },
+      {
+        name: "Andrej Karpathy",
+        title: "AI Educator & Researcher",
+        company: "OpenAI",
+        avatar: "https://pbs.twimg.com/profile_images/1581746750535897090/-YpLIlKH_400x400.jpg",
+        bio: "前Tesla Autopilot负责人，斯坦福CS231n明星讲师，AI教育顶流",
+        links: { x: "https://x.com/karpathy", website: "https://karpathy.ai" },
+        tags: ["Education", "Self-Driving"]
+      },
+      {
+        name: "Ilya Sutskever",
+        title: "Co-founder of SSI",
+        company: "SSI",
+        avatar: "https://pbs.twimg.com/profile_images/1625695018163220480/XS-E9y2d_400x400.jpg",
+        bio: "OpenAI联合创始人兼首席科学家，GPT系列核心架构师",
+        links: { x: "https://x.com/ilyasut" },
+        tags: ["LLM", "Safety"]
+      },
+      {
+        name: "Sundar Pichai",
+        title: "CEO of Google",
+        company: "Google",
+        avatar: "https://pbs.twimg.com/profile_images/1595604093606940673/wFLymIu8_400x400.jpg",
+        bio: "Google与Alphabet掌门人，Chrome与Android崛起功臣，Gemini战略主导者",
+        links: { x: "https://x.com/sundarpichai" },
+        tags: ["Leadership", "Products"]
+      },
+      {
+        name: "Jim Fan",
+        title: "NVIDIA AI Scientist",
+        company: "NVIDIA",
+        avatar: "https://pbs.twimg.com/profile_images/1624627139732615168/2B0XzdhL_400x400.jpg",
+        bio: "前Google DeepMind研究员，GEBO具身智能研究先驱，AI技术大V",
+        links: { x: "https://x.com/DrJimFan" },
+        tags: ["Embodied AI", "Robotics"]
+      },
+      {
+        name: "Mustafa Suleyman",
+        title: "CEO of Microsoft AI",
+        company: "Microsoft",
+        avatar: "https://pbs.twimg.com/profile_images/1705477600261120000/YMrJ7Vgx_400x400.jpg",
+        bio: "DeepMind联合创始人，Google AI产品负责人，现任Microsoft AI CEO",
+        links: { x: "https://x.com/mustafafund" },
+        tags: ["Products", "Applied AI"]
+      },
+      {
+        name: "Satya Nadella",
+        title: "CEO of Microsoft",
+        company: "Microsoft",
+        avatar: "https://pbs.twimg.com/profile_images/1595604523367923713/yS-t-r9T_400x400.jpg",
+        bio: "Microsoft转型掌舵人，Copilot布局者，Azure AI推动者",
+        links: { x: "https://x.com/satyanadella" },
+        tags: ["Enterprise", "Cloud"]
+      }
+    ];
+
+    let currentCompany = 'all';
+    let searchTerm = '';
+
+    function updateStats() {
+      const companies = [...new Set(allPeople.map(p => p.company))];
+      document.getElementById('people-count').textContent = allPeople.length;
+      document.getElementById('company-count').textContent = companies.length;
+    }
+
+    function renderFilters() {
       const companies = [...new Set(allPeople.map(p => p.company))].sort();
-      const container = document.getElementById('company-filters');
-      container.innerHTML = `
-        <button class="company-btn active w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-700 transition" data-company="all">全部</button>
-      `;
+      const container = document.getElementById('filter-container');
+      container.innerHTML = `<button class="filter-btn active" data-company="all">全部</button>`;
       companies.forEach(company => {
-        container.innerHTML += `
-          <button class="company-btn w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-700 transition" data-company="${company}">${company}</button>
-        `;
+        container.innerHTML += `<button class="filter-btn" data-company="${company}">${company}</button>`;
       });
 
-      container.querySelectorAll('.company-btn').forEach(btn => {
+      container.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           container.querySelector('.active').classList.remove('active');
           btn.classList.add('active');
-          renderCards(btn.dataset.company);
+          currentCompany = btn.dataset.company;
+          renderCards();
         });
       });
     }
 
-    function renderCards(company) {
+    function renderCards() {
       const container = document.getElementById('cards-container');
       const emptyState = document.getElementById('empty-state');
-      const filtered = company === 'all' ? allPeople : allPeople.filter(p => p.company === company);
+
+      let filtered = currentCompany === 'all' ? allPeople : allPeople.filter(p => p.company === currentCompany);
+
+      if (searchTerm) {
+        const term = searchTerm.toLowerCase();
+        filtered = filtered.filter(p =>
+          p.name.toLowerCase().includes(term) ||
+          p.title.toLowerCase().includes(term) ||
+          p.company.toLowerCase().includes(term) ||
+          (p.bio && p.bio.toLowerCase().includes(term)) ||
+          (p.tags && p.tags.some(t => t.toLowerCase().includes(term)))
+        );
+      }
 
       if (filtered.length === 0) {
         container.innerHTML = '';
-        emptyState.classList.remove('hidden');
+        emptyState.style.display = 'block';
         return;
       }
 
-      emptyState.classList.add('hidden');
-      container.innerHTML = filtered.map(person => `
-        <div class="card-hover bg-gray-800/50 rounded-xl p-6 border border-gray-700 transition-all duration-300">
-          <div class="flex items-start gap-4">
-            <img src="${person.avatar}" alt="${person.name}" class="w-16 h-16 rounded-full object-cover border-2 border-primary" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=3b82f6&color=fff'">
-            <div class="flex-1 min-w-0">
-              <h3 class="font-semibold text-lg text-white truncate">${person.name}</h3>
-              <p class="text-gray-400 text-sm truncate">${person.title || ''}</p>
-              <span class="inline-block mt-2 px-2 py-1 bg-primary/20 text-primary text-xs rounded-full">${person.company}</span>
+      emptyState.style.display = 'none';
+      container.innerHTML = filtered.map((person, index) => `
+        <div class="card" style="animation-delay: ${index * 0.08}s">
+          <div class="card-header">
+            <div class="avatar-wrapper">
+              <img class="avatar" src="${person.avatar}" alt="${person.name}"
+                   onerror="this.src='https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(person.name)}'">
+              <div class="online-indicator"></div>
+            </div>
+            <div class="card-info">
+              <h3 class="card-name">${person.name}</h3>
+              <p class="card-title">${person.title}</p>
+              <span class="card-company">
+                <i class="fas fa-building"></i>
+                ${person.company}
+              </span>
             </div>
           </div>
-          <div class="flex gap-3 mt-4 pt-4 border-t border-gray-700">
-            ${Object.entries(person.links || {}).map(([platform, url]) => `
-              <a href="${url}" target="_blank" rel="noopener noreferrer" class="social-icon w-9 h-9 rounded-full bg-gray-700 flex items-center justify-center hover:bg-gray-600 transition-transform" title="${platform}" style="color: ${SOCIAL_COLORS[platform] || '#fff'}">
-                <i class="${SOCIAL_ICONS[platform] || 'fas fa-link'}"></i>
-              </a>
-            `).join('')}
+          ${person.bio ? `<p class="card-bio">${person.bio}</p>` : ''}
+          <div class="card-footer">
+            <div class="social-links">
+              ${Object.entries(person.links || {}).map(([platform, url]) => `
+                <a href="${url}" target="_blank" rel="noopener noreferrer" class="social-link" title="${platform}">
+                  <span class="${SOCIAL_ICONS[platform] === 'svg-icon' ? '' : SOCIAL_ICONS[platform]}">${platform === 'x' ? X_SVG : ''}</span>
+                </a>
+              `).join('')}
+            </div>
+            <div class="card-tags">
+              ${(person.tags || []).slice(0, 2).map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
           </div>
         </div>
       `).join('');
     }
 
-    loadData();
+    function initSearch() {
+      const searchInput = document.getElementById('search-input');
+      searchInput.addEventListener('input', (e) => {
+        searchTerm = e.target.value.trim();
+        renderCards();
+      });
+    }
+
+    createParticles();
+    initBackToTop();
+    initSearch();
+    updateStats();
+    renderFilters();
+    renderCards();
   </script>
 </body>
 </html>
