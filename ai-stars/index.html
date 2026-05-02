@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Stars - AI行业大牛导航</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3b82f6',
+            dark: '#1a1a2e',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+    }
+    .company-btn.active {
+      background: #3b82f6;
+      color: white;
+    }
+    .social-icon:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body class="text-gray-100">
+  <!-- Header -->
+  <header class="bg-gray-900/80 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <h1 class="text-2xl font-bold text-white flex items-center gap-3">
+        <i class="fas fa-star text-yellow-400"></i>
+        AI Stars
+      </h1>
+      <p class="text-gray-400 text-sm mt-1">收集AI行业大牛，点击头像即可访问他们的主页</p>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-6 py-8 flex gap-8">
+    <!-- Sidebar -->
+    <aside class="w-48 flex-shrink-0">
+      <div class="bg-gray-800/50 rounded-xl p-4 sticky top-24">
+        <h3 class="text-sm font-semibold text-gray-400 uppercase mb-3">公司筛选</h3>
+        <div class="space-y-2" id="company-filters">
+          <button class="company-btn active w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-700 transition" data-company="all">全部</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="cards-container">
+        <!-- Cards will be injected here -->
+      </div>
+      <div id="empty-state" class="hidden text-center py-20">
+        <i class="fas fa-user-slash text-4xl text-gray-600 mb-4"></i>
+        <p class="text-gray-500">暂无数据</p>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const SOCIAL_ICONS = {
+      x: 'fab fa-x-twitter',
+      twitter: 'fab fa-twitter',
+      youtube: 'fab fa-youtube',
+      github: 'fab fa-github',
+      linkedin: 'fab fa-linkedin',
+      website: 'fas fa-globe',
+      blog: 'fas fa-blog',
+      ins: 'fab fa-instagram',
+    };
+
+    const SOCIAL_COLORS = {
+      x: '#000000',
+      twitter: '#1DA1F2',
+      youtube: '#FF0000',
+      github: '#ffffff',
+      linkedin: '#0077B5',
+      website: '#3b82f6',
+      blog: '#10b981',
+      ins: '#E4405F',
+    };
+
+    let allPeople = [];
+
+    async function loadData() {
+      try {
+        const response = await fetch('data/people.json');
+        allPeople = await response.json();
+        renderCompanies();
+        renderCards('all');
+      } catch (error) {
+        console.error('Failed to load data:', error);
+      }
+    }
+
+    function renderCompanies() {
+      const companies = [...new Set(allPeople.map(p => p.company))].sort();
+      const container = document.getElementById('company-filters');
+      container.innerHTML = `
+        <button class="company-btn active w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-700 transition" data-company="all">全部</button>
+      `;
+      companies.forEach(company => {
+        container.innerHTML += `
+          <button class="company-btn w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-700 transition" data-company="${company}">${company}</button>
+        `;
+      });
+
+      container.querySelectorAll('.company-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          container.querySelector('.active').classList.remove('active');
+          btn.classList.add('active');
+          renderCards(btn.dataset.company);
+        });
+      });
+    }
+
+    function renderCards(company) {
+      const container = document.getElementById('cards-container');
+      const emptyState = document.getElementById('empty-state');
+      const filtered = company === 'all' ? allPeople : allPeople.filter(p => p.company === company);
+
+      if (filtered.length === 0) {
+        container.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      container.innerHTML = filtered.map(person => `
+        <div class="card-hover bg-gray-800/50 rounded-xl p-6 border border-gray-700 transition-all duration-300">
+          <div class="flex items-start gap-4">
+            <img src="${person.avatar}" alt="${person.name}" class="w-16 h-16 rounded-full object-cover border-2 border-primary" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=3b82f6&color=fff'">
+            <div class="flex-1 min-w-0">
+              <h3 class="font-semibold text-lg text-white truncate">${person.name}</h3>
+              <p class="text-gray-400 text-sm truncate">${person.title || ''}</p>
+              <span class="inline-block mt-2 px-2 py-1 bg-primary/20 text-primary text-xs rounded-full">${person.company}</span>
+            </div>
+          </div>
+          <div class="flex gap-3 mt-4 pt-4 border-t border-gray-700">
+            ${Object.entries(person.links || {}).map(([platform, url]) => `
+              <a href="${url}" target="_blank" rel="noopener noreferrer" class="social-icon w-9 h-9 rounded-full bg-gray-700 flex items-center justify-center hover:bg-gray-600 transition-transform" title="${platform}" style="color: ${SOCIAL_COLORS[platform] || '#fff'}">
+                <i class="${SOCIAL_ICONS[platform] || 'fas fa-link'}"></i>
+              </a>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

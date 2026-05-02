@@ -1,0 +1,155 @@
+[
+  {
+    "name": "Sam Altman",
+    "title": "CEO of OpenAI",
+    "company": "OpenAI",
+    "avatar": "https://pbs.twimg.com/profile_images/1623350434003099649/6df5mXOR_400x400.jpg",
+    "links": {
+      "x": "https://x.com/sama",
+      "website": "https://samaltman.com",
+      "github": "https://github.com/samaltman"
+    }
+  },
+  {
+    "name": "Andrew Ng",
+    "title": "Founder of DeepLearning.AI",
+    "company": "Google",
+    "avatar": "https://pbs.twimg.com/profile_images/1705477600261120000/YMrJ7Vgx_400x400.jpg",
+    "links": {
+      "x": "https://x.com/AndrewYNg",
+      "youtube": "https://www.youtube.com/@AndrewNg",
+      "website": "https://www.andrewng.org"
+    }
+  },
+  {
+    "name": "Yann LeCun",
+    "title": "Chief AI Scientist at Meta",
+    "company": "Meta",
+    "avatar": "https://pbs.twimg.com/profile_images/1088097616503291904/yLgRf1sP_400x400.jpg",
+    "links": {
+      "x": "https://x.com/ylecun",
+      "website": "https://www.facebook.com/yann.lecun",
+      "github": "https://github.com/yann"
+    }
+  },
+  {
+    "name": "Jeff Dean",
+    "title": "Google Fellow",
+    "company": "Google",
+    "avatar": "https://pbs.twimg.com/profile_images/1595604506148864000/DINjvb9A_400x400.jpg",
+    "links": {
+      "x": "https://x.com/JeffDean",
+      "github": "https://github.com/jeffdean"
+    }
+  },
+  {
+    "name": "Demis Hassabis",
+    "title": "CEO of Google DeepMind",
+    "company": "Google",
+    "avatar": "https://pbs.twimg.com/profile_images/1618363614/Demis_crop_400x400.jpg",
+    "links": {
+      "website": "https://deepmind.google/",
+      "linkedin": "https://www.linkedin.com/in/demishassabis"
+    }
+  },
+  {
+    "name": "Fei-Fei Li",
+    "title": "Professor at Stanford",
+    "company": "Google",
+    "avatar": "https://pbs.twimg.com/profile_images/1705477896090477568/DIhLcdtG_400x400.jpg",
+    "links": {
+      "x": "https://x.com/drfeifei",
+      "website": "https://www.cs.stanford.edu/~fei-fei"
+    }
+  },
+  {
+    "name": "Satya Nadella",
+    "title": "CEO of Microsoft",
+    "company": "Microsoft",
+    "avatar": "https://pbs.twimg.com/profile_images/1595604523367923713/yS-t-r9T_400x400.jpg",
+    "links": {
+      "x": "https://x.com/satyanadella",
+      "linkedin": "https://www.linkedin.com/in/satyanadella"
+    }
+  },
+  {
+    "name": "Ilya Sutskever",
+    "title": "Co-founder of Safe Superintelligence",
+    "company": "SSI",
+    "avatar": "https://pbs.twimg.com/profile_images/1625695018163220480/XS-E9y2d_400x400.jpg",
+    "links": {
+      "x": "https://x.com/ilyasut",
+      "github": "https://github.com/ilyasutskever"
+    }
+  },
+  {
+    "name": "Dario Amodei",
+    "title": "CEO of Anthropic",
+    "company": "Anthropic",
+    "avatar": "https://pbs.twimg.com/profile_images/1705477600261120000/YMrJ7Vgx_400x400.jpg",
+    "links": {
+      "website": "https://www.anthropic.com",
+      "linkedin": "https://www.linkedin.com/in/dario-amodei"
+    }
+  },
+  {
+    "name": "Jensen Huang",
+    "title": "CEO of NVIDIA",
+    "company": "NVIDIA",
+    "avatar": "https://pbs.twimg.com/profile_images/1689258340769923073/h0O1vWH0_400x400.jpg",
+    "links": {
+      "x": "https://x.com/jensen_huang",
+      "website": "https://www.nvidia.com"
+    }
+  },
+  {
+    "name": "Andrej Karpathy",
+    "title": "AI Educator & Researcher",
+    "company": "OpenAI",
+    "avatar": "https://pbs.twimg.com/profile_images/1581746750535897090/-YpLIlKH_400x400.jpg",
+    "links": {
+      "x": "https://x.com/karpathy",
+      "youtube": "https://www.youtube.com/@AndrejKarpathy",
+      "github": "https://github.com/karpathy"
+    }
+  },
+  {
+    "name": "Geoffrey Hinton",
+    "title": "Godfather of AI",
+    "company": "Google",
+    "avatar": "https://pbs.twimg.com/profile_images/1595604314853212162/IWC5VdD3_400x400.jpg",
+    "links": {
+      "website": "https://www.cs.toronto.edu/~hinton/"
+    }
+  },
+  {
+    "name": "Mark Zuckerberg",
+    "title": "CEO of Meta",
+    "company": "Meta",
+    "avatar": "https://pbs.twimg.com/profile_images/1587795982947226625/wEBj4Xjb_400x400.jpg",
+    "links": {
+      "x": "https://x.com/finkd",
+      "website": "https://about.meta.com"
+    }
+  },
+  {
+    "name": "Sundar Pichai",
+    "title": "CEO of Google",
+    "company": "Google",
+    "avatar": "https://pbs.twimg.com/profile_images/1595604093606940673/wFLymIu8_400x400.jpg",
+    "links": {
+      "x": "https://x.com/sundarpichai",
+      "linkedin": "https://www.linkedin.com/in/sundarpichai"
+    }
+  },
+  {
+    "name": "Lisa Yao",
+    "title": "AI Research Director at Google",
+    "company": "Google",
+    "avatar": "https://pbs.twimg.com/profile_images/1705477600261120000/YMrJ7Vgx_400x400.jpg",
+    "links": {
+      "x": "https://x.com/lisayao",
+      "linkedin": "https://www.linkedin.com/in/lisayao"
+    }
+  }
+]
